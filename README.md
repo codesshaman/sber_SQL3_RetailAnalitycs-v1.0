@@ -82,73 +82,73 @@
 
 | **Поле**                | **Имя системного поля**       | **Формат/возможные значения**    | **Описание**                                               |
 |:------------------------:|:---------------------------:|:-------------------------------:|:-------------------------------------------------------------------------:|
-| Transaction ID           | Transaction_ID              | ---                             | Unique value                                                               |
-| Card ID                  | Customer_Card_ID            | ---                             | ---                                                                        |
-| Transaction sum          | Transaction_Summ            | Arabic numeral                  | Transaction sum in rubles(full purchase price excluding discounts) |
-| Transaction date         | Transaction_DateTime        | dd.mm.yyyy hh:mm:ss             | Date and time when the transaction was made                                |
-| Store                    | Transaction_Store_ID        | Store ID                        | The store where the transaction was made                                   |
+| ID транзакции            | Transaction_ID              | ---                             | Уникальное значение value                                                               |
+| ID карты                 | Customer_Card_ID            | ---                             | ---                                                                        |
+| Сумма транзакции         | Transaction_Summ            | арабские цифры                  | Сумма сделки в рублях(полная стоимость покупки без скидки) |
+| Дата транзакции          | Transaction_DateTime        | dd.mm.yyyy hh:mm:ss             | Дата и время совершения транзакции                                |
+| Магазин                  | Transaction_Store_ID        | ID Магазина                        | Магазин, в котором была совершена сделка                                   |
 
 #### Таблица Checks
 
 | **Поле**                                        | **Имя системного поля**  | **Формат/возможные значения** | **Описание**                                                                                                                  |
 |:------------------------------------------------:|:----------------------:|:----------------------------:|:----------------------------------------------------------------------------------------------------------------:|
-| Transaction ID                                   | Transaction_ID         | ---                          | Transaction ID is specified for all products in the check                                                         |
-| Product in the check                             | SKU_ID                 | ---                          | ---                                                                                                               |
-| Number of pieces or kilograms                    | SKU_Amount             | Arabic numeral               | The quantity of the purchased product                                                                             |
-| Total amount for which the product was purchased | SKU_Summ               | Arabic numeral               | The purchase amount of the actual volume of this product in rubles (full price without discounts and bonuses) |
-| The paid price of the product                    | SKU_Summ_Paid          | Arabic numeral               | The amount actually paid for the product not including the discount                                            |
-| Discount granted                                 | SKU_Discount           | Arabic numeral               | The size of the discount granted for the product in rubles                                                 |
+| ID транзакции                                    | Transaction_ID         | ---                          | Идентификатор транзакции указан для всех товаров в чеке                                                         |
+| Товар в чеке                                     | SKU_ID                 | ---                          | ---                                                                                                               |
+| Количество штук или килограммов                  | SKU_Amount             | арабские цифры               | Количество приобретаемого товара                                                                             |
+| Общая сумма, на которую был приобретен товар     | SKU_Summ               | арабские цифры               | Сумма покупки реального объема данного товара в рублях (полная цена без скидок и бонусов) |
+| Оплаченная цена продукта                         | SKU_Summ_Paid          | арабские цифры               | Сумма, фактически уплаченная за товар, без учета скидки                                            |
+| Скидка предоставлена                             | SKU_Discount           | арабские цифры               | Размер предоставляемой скидки на товар в рублях                                                 |
 
 #### Таблица Product grid
 
 | **Поле**                     | **Имя системного поля**       | **Формат/возможные значения**                  | **Описание**                                                                                                                                                                                                |
 |:-----------------------------:|:---------------------------:|:---------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| Product ID                    | SKU_ID                      | ---                                           | ---                                                                                                                                                                                                            |
-| Product name                  | SKU_Name                    | Cyrillic or Latin, Arabic numerals, special characters | ---                                                                                                                                                                                                            |
-| SKU group                     | Group_ID                    | ---                                           | The ID of the group of related products to which the product belongs (for example, same type of yogurt of the same manufacturer and volume, but different flavors). One identifier is specified for all products in the group |
-| Product purchase price | SKU_Purchase_Price          | Arabic numeral                                       | The purchase price of the product for this store                                                                                                                                                             |
-| Product retail price   | SKU_Retail_Price            | Arabic numeral                                       | The sale price of the product excluding discounts for this store                                                                                                                                          |
+| ID Товара                    | SKU_ID                      | ---                                           | ---                                                                                                                                                                                                            |
+| Наименование товара          | SKU_Name                    | Кириллица или латиница, арабские цифры, специальные символы | ---                                                                                                                                                                                                            |
+| Группа SKU                   | Group_ID                    | ---                                           | ID группы сопутствующих товаров, к которой относится товар (например, однотипный йогурт одного производителя и объема, но разных вкусов). Для всех товаров в группе указан один идентификатор |
+| Цена покупки продукта        | SKU_Purchase_Price          | арабские цифры                                       | Цена покупки товара для этого магазина                                                                                                                                                       |
+| Розничная цена продукта      | SKU_Retail_Price            | арабские цифры                                       | Цена продажи товара без учета скидки для этого магазина                                                                                                                               |
 
 #### Таблица Stores
 
 | **Поле**              | **Имя системного поля**    | **Формат/возможные значения** | **Описание**                                                  |
 |:----------------------:|:------------------------:|:----------------------------:|:----------------------------------------------------------------:|
-| Store                  | Transaction_Store_ID     | ---                          | ---                                                              |
-| Product ID             | SKU_ID                   | ---                          | ---                                                              |
-| Product purchase price | SKU_Purchase_Price       | Arabic numeral               | Purchasing price of products for this store                      |
-| Product retail price   | SKU_Retail_Price         | Arabic numeral               | The sale price of the product excluding discounts for this store |
+| Магазин                | Transaction_Store_ID     | ---                          | ---                                                              |
+| ID товара              | SKU_ID                   | ---                          | ---                                                              |
+| Цена покупки продукта  | SKU_Purchase_Price       | арабские цифры               | Закупочная цена товаров для этого магазина                     |
+| Розничная цена продукта  | SKU_Retail_Price         | арабские цифры               | Цена продажи товара без учета скидки для этого магазина |
 
 
 #### Таблица SKU group
 
 | **Поле**         | **Имя системного поля** | **Формат/возможные значения**                  | **Описание** |
 |:-----------------:|:---------------------:|:---------------------------------------------:|:---------------:|
-| SKU group         | Group_ID              | ---                                           | ---             |
-| Group name        | Group_Name            | Cyrillic or Latin, Arabic numerals, special characters | ---             | 
+| Группа SKU        | Group_ID              | ---                                           | ---             |
+| Имя группы        | Group_Name            | Кириллица или латиница, арабские цифры, специальные символы | ---             | 
 
-#### Date of analysis formation Table
+#### Таблица Date of analysis formation
 
 | **Field**         | **Имя системного поля** | **Формат/возможные значения**                  | **Описание** |
 |:-----------------:|:---------------------:|:---------------------------------------------:|:---------------:|
-| Date of analysis         | Analysis_Formation              | dd.mm.yyyy hh:mm:ss                                           | ---             |
+| Дата анализа      | Analysis_Formation              | dd.mm.yyyy hh:mm:ss                                           | ---             |
 
 
-### Output data
+### Выходные данные
 
 #### Представление Customers
 
 | **Поле**                                     | **Имя системного поля**          | **Формат/возможные значения**     | **Описание**                                                                  |
 |:---------------------------------------------:|:------------------------------:|:--------------------------------:|:-----------------------------------------------------------------------------:|
-| Customer ID                                   | Customer_ID                    | ---                              | Unique value                                                                   |
-| Value of the average check                    | Customer_Average_Check         | Arabic numeral, decimal          | Value of the average check in rubles for the analyzed period                 |
-| Average check segment                         | Customer_Average_Check_Segment | High; Medium; Low                | Segment description                                                            |
-| Transaction frequency value                   | Customer_Frequency             | Arabic numeral, decimal          | Value of customer visit frequency in the average number of days between transactions |
-| Transaction frequency segment                 | Customer_Frequency_Segment     | Often; Occasionally; Rarely      | Segment description                                                            |
-| Number of days since the previous transaction | Customer_Inactive_Period       | Arabic numeral, decimal          | Number of days passed since the previous transaction date               |
-| Churn rate                                    | Customer_Churn_Rate            | Arabic numeral, decimal          | Value of the customer churn rate                                               |
-| Churn rate segment                            | Customer_Churn_Segment         | High; Medium; Low                | Segment description                                                            |
-| Segment number                                | Customer_Segment               | Arabic numeral                   | The number of the segment to which the customer belongs                        |
-| Main  store ID                                | Customer_Primary_Store         | ---                              | ---                                                                            |
+| Пользовательский ID                                   | Customer_ID                    | ---                              | Unique value                                                                   |
+| Стоимость среднего чека                    | Customer_Average_Check         | арабские цифры, десятичные          | Value of the average check in rubles for the analyzed period                 |
+| Сегмент среднего чека                         | Customer_Average_Check_Segment | Высокий, Средний, Низкий         | Segment description                                                            |
+| Значение частоты транзакций                   | Customer_Frequency             | арабские цифры, десятичные       | Value of customer visit frequency in the average number of days between transactions |
+| Сегмент частоты транзакций                    | Customer_Frequency_Segment     | Часто; Иногда; Редко      | Описание сегмента                                                            |
+| Количество дней с момента предыдущей транзакции | Customer_Inactive_Period       | арабские цифры, десятичные           | Количество дней, прошедших с даты предыдущей транзакции               |
+| Скорость оттока                               | Customer_Churn_Rate            | арабские цифры, десятичные           | Значение коэффициента оттока клиентов                                               |
+| Сегмент коэффициента оттока                   | Customer_Churn_Segment         | Высокий, Средний, Низкий                | Описание сегмента                                                            |
+| Номер сегмента                                | Customer_Segment               | арабские цифры                   | Номер сегмента, к которому относится клиент                        |
+| ID основного магазина                         | Customer_Primary_Store         | ---                              | ---                                                                            |
 
 #### Представление Purchase history
 
