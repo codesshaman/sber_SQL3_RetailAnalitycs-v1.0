@@ -154,218 +154,223 @@
 
 | **Поле**                       | **Имя системного поля**       | **Формат/возможные значения**     | **Описание**                                                       |
 |:-------------------------------:|:---------------------------:|:--------------------------------:|:--------------------------------------------------------------------:|
-| Customer ID                     | Customer_ID                 | ---                              | ---                                                                   |
-| Transaction ID                  | Transaction_ID              | ---                              | ---                                                                   |
-| Transaction date                | Transaction_DateTime        | dd.mm.yyyyy hh:mm:ss.0000000     | The date when the transaction was made                                                                                                                                                                                             |
-| SKU group                       | Group_ID                    | ---                              | The ID of the group of related products to which the product belongs (for example, same type of yogurt of the same manufacturer and volume, but different flavors). One identifier is specified for all products in the group  |
-| Prime cost                      | Group_Cost                  | Arabic numeral, decimal | ---                                                                                                                                                                                                                                         |
-| Base retail price               | Group_Summ                  | Arabic numeral, decimal | ---                                                                                                                                                                                                                                         |
-| Actual cost paid                | Group_Summ_Paid             | Arabic numeral, decimal | ---                                                                                                                                                                                                                                         |
+| Пользовательский ID             | Customer_ID                 | ---                              | ---                                                                   |
+| ID транзакции                   | Transaction_ID              | ---                              | ---                                                                   |
+| Дата транзакции                 | Transaction_DateTime        | dd.mm.yyyyy hh:mm:ss.0000000     | Дата совершения сделки                                                                                                                                                                                             |
+| Группа SKU                      | Group_ID                    | ---                              | ID группы сопутствующих товаров, к которой относится товар (например, однотипный йогурт одного производителя и объема, но разных вкусов). Для всех товаров в группе указан один идентификатор  |
+| Себестоимость                   | Group_Cost                  | арабские цифры, десятичные | ---                                                                                                                                                                                                                                         |
+| Базовая розничная цена          | Group_Summ                  | арабские цифры, десятичные | ---                                                                                                                                                                                                                                         |
+| Фактическая стоимость оплачена  | Group_Summ_Paid             | арабские цифры, десятичные | ---                                                                                                                                                                                                                                         |
 
 #### Представление Periods
 
 | **Поле**                                     | **Имя системного поля**       | **Формат/возможные значения**     | **Описание**                                                                                                                                                                                                 |
 |:---------------------------------------------:|:---------------------------:|:--------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| Customer ID                                   | Customer_ID                 | ---                              | ---                                                                                                                                                                                                          |
-| SKU group                                     | Group_ID                    | ---                              | The ID of the group of related products to which the product belongs (for example, same type of yogurt of the same manufacturer and volume, but different flavors). One identifier is specified for all products in the group |
-| Date of first purchase of the group           | First_Group_Purchase_Date   | yyyy-mm-dd hh:mm:ss.0000000      | ---                                                                                                                                                                                                          |
-| Date of last purchase of the group            | Last_Group_Purchase_Date    | yyyy-mm-dd hh:mm:ss.0000000      | ---                                                                                                                                                                                                          |
-| Number of transactions with the group         | Group_Purchase              | Arabic numeral, decimal          | ---                                                                                                                                                                                                          |
-| Intensity of group purchases                  | Group_Frequency             | Arabic numeral, decimal          | ---                                                                                                                                                                                                          |
-| Minimum group discount                        | Group_Min_Discount          | Arabic numeral, decimal | ---                                                                                                                                                                                                          |
+| Пользовательский ID                           | Customer_ID                 | ---                              | ---                                                                                                                                                                                                          |
+| Группа SKU                                    | Group_ID                    | ---                              | ID группы сопутствующих товаров, к которой относится товар (например, однотипный йогурт одного производителя и объема, но разных вкусов). Для всех товаров в группе указан один идентификатор |
+| Дата первой покупки группы                    | First_Group_Purchase_Date   | yyyy-mm-dd hh:mm:ss.0000000      | ---                                                                                                                                                                                                          |
+| Дата последней покупки группы                 | Last_Group_Purchase_Date    | yyyy-mm-dd hh:mm:ss.0000000      | ---                                                                                                                                                                                                          |
+| Количество сделок с группой                   | Group_Purchase              | арабские цифры, десятичные       | ---                                                                                                                                                                                                          |
+| Интенсивность групповых покупок               | Group_Frequency             | арабские цифры, десятичные       | ---                                                                                                                                                                                                          |
+| Минимальная групповая скидка                  | Group_Min_Discount          | арабские цифры, десятичные       | ---                                                                                                                                                                                                          |
 
 #### Представление Groups
 
 | **Поле**                              | **Имя системного поля**       | **Формат/возможные значения**     | **Описание**                                                                                                                        |
 |:--------------------------------------:|:---------------------------:|:--------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
-| Customer ID                            | Customer_ID                 | ---                              | ---                                                                                                                                 |
-| Group ID                               | Group_ID                    | ---                              | ---                                                                                                                                 |
-| Affinity index                         | Group_Affinity_Index        | Arabic numeral, decimal          | Customer affinity index for this group                                                                                 |
-| Churn index                            | Group_Churn_Rate            | Arabic numeral, decimal          | Customer churn index for a specific group                                                                                          |
-| Stability index                        | Group_Stability_Index       | Arabic numeral, decimal          | Indicator demonstrating the stability of the customer consumption of the group                                                                |
-| Actual margin for the group            | Group_Margin                | Arabic numeral, decimal          | Indicator of the actual margin for the group for a particular customer                                                                       |
-| Share of transactions with a discount  | Group_Discount_Share        | Arabic numeral, decimal          | Share of purchasing transactions of the group by a customer, within which the discount was applied (excluding the loyalty program bonuses) |
-| Minimum size of the discount           | Group_Minimum_Discount      | Arabic numeral, decimal          | Minimum size of the group discount for the customer                                                                    |
-| Average discount                       | Group_Average_Discount      | Arabic numeral, decimal          | Average size of the group discount for the customer                                                                                         |
+| Пользовательский ID                    | Customer_ID                 | ---                              | ---                                                                                                                                 |
+| ID группы                              | Group_ID                    | ---                              | ---                                                                                                                                 |
+| Индекс сходства                        | Group_Affinity_Index        | арабские цифры, десятичные          | Индекс близости клиентов для этой группы                                                                                |
+| Индекс оттока                          | Group_Churn_Rate            | арабские цифры, десятичные          | Индекс оттока клиентов для определенной группы                                                                                          |
+| Индекс стабильности                    | Group_Stability_Index       | арабские цифры, десятичные          | Индикатор, демонстрирующий стабильность потребительского потребления группы                                                                |
+| Фактическая маржа для группы           | Group_Margin                | арабские цифры, десятичные          | Индикатор фактической маржи по группе для конкретного клиента                                                                       |
+| Доля сделок со скидкой                 | Group_Discount_Share        | арабские цифры, десятичные          | Доля покупок группы покупателем, в рамках которой применялась скидка (без учета бонусов по программе лояльности) |
+| Минимальный размер скидки              | Group_Minimum_Discount      | арабские цифры, десятичные          | Минимальный размер групповой скидки для клиента                                                                   |
+| Средняя скидка                         | Group_Average_Discount      | арабские цифры, десятичные          | Средний размер групповой скидки для клиента                                                                                         |
 
 
-## Chapter III
+## Глава III
 
-## Part 1. Creating a database
+## Часть 1. Создание базы данных
 
-Write a *part1.sql* script that creates the database and tables described above in the [Input data](#input-data).
+Напишите сценарий **part1.sql**, который создает базу данных и таблицы, описанные выше во [входных данных](#input-data).
 
-Also, add procedures to the script that allow you to import and export data for each table from/to a file with *.csv* and *.tsv* extensions. 
+Также добавьте в скрипт процедуры, позволяющие импортировать и экспортировать данные для каждой таблицы из/в файл с расширениями .csv и .tsv. 
     
-A separator is specified as a parameter of each procedure for importing from a *csv* file.
+В качестве параметра каждой процедуры импорта из csv- файла указывается разделитель.
 
-Enter at least 5 records in every table.
-As you progress through the task, you will need new data to test all of your choices.
-This new data should also be added to this script. 
+Введите не менее 5 записей в каждую таблицу. По мере выполнения задания вам потребуются новые данные, чтобы проверить все ваши варианты. Эти новые данные также должны быть добавлены в этот сценарий.
     
-Some test data could be found in the *datasets* folder.
+Некоторые тестовые данные можно найти в папке *datasets*.
 
-If *csv* or *tsv* files were used to add data to the tables, they must also be uploaded to the GIT repository.
+Если для добавления данных в таблицы использовались файлы csv или tsv , их также необходимо загрузить в репозиторий GIT.
 
-## Part 2. Creating views
+## Часть 2. Создание представлений
 
-Create a *part2.sql* script and write the views described above in the [Output data](#output-data). Also add test queries for each view. It is acceptable to create a separate script starting with *part2_* for each view.
+Создайте скрипт part2.sql и пропишите представления, описанные выше, в [Output data](#output-data). Также добавьте тестовые запросы для каждого представления. Для каждого вида допустимо создавать отдельный скрипт, начинающийся с part2_.
 
-You can find more information for each field in the materials.
+Более подробную информацию по каждому полю можно найти в материалах.
 
-## Part 3. Role model
+## Часть 3. Модель ролей
 
-Create roles in the *part3.sql* script and give them permissions as described below.
+Создайте роли в сценарии part3.sql и предоставьте им разрешения, как описано ниже.
 
-#### Administrator
-The administrator has full permissions to edit and view any information, start and stop the processing.
+#### Администратор
+Администратор имеет полные права на редактирование и просмотр любой информации, запуск и остановку обработки.
 
-#### Visitor
-Only view information of all tables.
+#### Посетитель
+Только просмотр информации всех таблиц.
 
-## Part 4. Forming personal offers aimed at the growth of the average check
+## Часть 4. Формирование персональных предложений, направленных на рост среднего чека
 
-Create a *part4.sql* script, in which you should add the following function.
+Создайте скрипт part4.sql , в который вы должны добавить следующую функцию.
 
-### Write a function that determines offers that aimed at the growth of the average check
-Function parameters:
-- average check calculation method (1 - per period, 2 - per quantity)
-- first and last dates of the period (for method 1)
-- number of transactions (for method 2)
-- coefficient of average check increase
-- maximum churn index
-- maximum share of transactions with a discount (in percent)
-- allowable share of margin (in percent)
+### Написать функцию, определяющую предложения, направленные на рост среднего чека
 
-##### Offer condition determination
+Параметры функции:
+- метод расчета среднего чека (1 - за период, 2 - за количество)
+- первая и последняя даты периода (для метода 1)
+- количество транзакций (для метода 2)
+- коэффициент увеличения среднего чека
+- максимальный индекс оттока
+- максимальная доля сделок со скидкой (в процентах)
+- допустимая доля маржи (в процентах)
 
-1.  **Choosing the method of calculating the average check.**
-    There is an option to choose a method of calculating an average check - for a certain period of time or for a certain number of recent transactions. The calculation method *manually determined* by the user.
+##### Определение условия предложения
 
-    1. The user selects the calculation method **by period**, and then specifies the first and last dates of the period for which you want to calculate the average check for the entire population of customers in the sample. Here, the last date of the specified period must be later than the first one, and the specified period must be within the total analyzed period. If the date is too early or too late, the system automatically substitutes the date of the beginning or the end of the analyzed period respectively. All transactions made by each specific customer during a given period are considered for the calculation.
+1.  **Выбор метода расчета среднего чека.**
 
-    2. The user selects the calculation method **by the number of recent transactions**, and then manually specifies the number of transactions for which it is necessary to calculate the average check. To calculate the average check, we take the user-specified number of transactions, starting with the most recent one in reverse chronological order. In case any customer from the sample makes less than the specified number of transactions during the whole analyzed period, the available number of transactions is used for the analysis.
+    Есть возможность выбрать способ начисления среднего чека - за определенный период времени или за определенное количество последних транзакций. Метод расчета вручную определяется пользователем.
 
-2.  **Determination of the average check.** For each customer, the current value of the average check is determined according to the method selected in step 1. This is done by dividing the total turnover of all transactions of a customer in the sample by the number of these transactions. The final value is saved in the table as the current value of the average check.
+    1. Пользователь выбирает метод расчета **по периодам**, а затем указывает первую и последнюю даты периода, за который требуется рассчитать средний чек для всей совокупности клиентов выборки. При этом последняя дата указанного периода должна быть позже первой, а указанный период должен находиться в пределах всего анализируемого периода. Если дата слишком ранняя или слишком поздняя, ​​система автоматически подставляет дату начала или окончания анализируемого периода соответственно. Для расчета учитываются все транзакции, совершенные каждым конкретным клиентом в течение заданного периода.
 
-3.  **Determination of the target value of the average check.** The calculated value of the average check is multiplied by the coefficient set by the user. The received value is saved in the system as a target value of the average check of the customer and further is used to form the offer condition, which must be fulfilled by the customer to get the reward.
+    2. Пользователь выбирает способ расчета **по количеству последних транзакций**, а затем вручную указывает количество транзакций, по которым необходимо рассчитать средний чек. Для расчета среднего чека мы берем заданное пользователем количество транзакций, начиная с самой последней в обратном хронологическом порядке. В случае, если какой-либо клиент из выборки совершает меньше указанного количества транзакций за весь анализируемый период, для анализа используется доступное количество транзакций.
 
-##### Reward determination
+2.  **Определение среднего чека**. По каждому покупателю определяется текущая величина среднего чека по методу, выбранному на шаге 1. Это делается путем деления общего оборота всех сделок клиента в выборке на количество этих сделок. Итоговое значение сохраняется в таблице как текущее значение среднего чека.
 
-4.  **Determination of the group to form the reward.** A group that meets the following criteria in sequence is selected to form the reward:
 
-    -  The affinity index of the group is the highest possible.
+3.  **Определение целевого значения среднего чека**. Рассчитанное значение среднего чека умножается на установленный пользователем коэффициент. Полученное значение сохраняется в системе как целевое значение среднего чека покупателя и в дальнейшем используется для формирования условия предложения, которое необходимо выполнить покупателю для получения вознаграждения.
 
-- The churn index for this group should not exceed the value set by the user. If the churn index exceeds the set value, the next group by the affinity index is used;
+##### Определение вознаграждения
 
-    - The share of transactions with a discount for this group is less than the value set by the user. If the selected group exceeds the set value, the next group by the affinity index that also meets the churn criterion is used. 
+4.  **Определение группы для формирования вознаграждения**. Для формирования награды выбирается группа, последовательно отвечающая следующим критериям:
 
-5.  **Determination of the maximum allowable size of a discount for the reward.**
+    -  Индекс близости группы максимально возможный.
 
-The user manually determines the share of margin (in percent) that is allowed to be used to provide a reward for the group. The final value of the maximum allowable discount is calculated by multiplying the set value by the average customer margin for the group.
+- Индекс оттока для этой группы не должен превышать значение, установленное пользователем. Если показатель оттока превышает установленное значение, используется следующая группа по показателю сходства;
 
-6.  **Determination of the discount size**. The value obtained at step 5 is compared to the minimum discount that was fixed for the customer for the given group, rounded up in increments of 5%. If the minimum discount after rounding is less than the value obtained at step 5, it is set as a discount for the group within the offer for the customer. Otherwise, this group is excluded from consideration, and to form an offer for the customer the process is repeated, starting with step 4 (the next appropriate group according to the described criteria is used).
+    - Доля транзакций со скидкой для данной группы меньше установленного пользователем значения. Если выбранная группа превышает установленное значение, используется следующая группа по индексу сходства, которая также соответствует критерию оттока.
 
-Function output:
+5.  **Определение максимально допустимого размера скидки на вознаграждение.**
+
+Пользователь вручную определяет долю маржи (в процентах), которую разрешено использовать для предоставления вознаграждения группе. Окончательное значение максимально допустимой скидки рассчитывается путем умножения установленного значения на среднюю наценку клиента по группе.
+
+6.  **Определение размера скидки**. Значение, полученное на шаге 5, сравнивается с минимальной скидкой, которая была установлена ​​для покупателя для данной группы, округленной в большую сторону с шагом 5%. Если минимальная скидка после округления меньше значения, полученного на шаге 5, она устанавливается как скидка для группы в рамках предложения для клиента. В противном случае данная группа исключается из рассмотрения, а для формирования предложения покупателю процесс повторяется, начиная с шага 4 (используется следующая подходящая группа по описанным критериям).
+
+Вывод функции:
 
 | **Поле**                      | **Имя системного поля**      | **Формат/возможные значения**                | **Описание**                                                                               |
 |--------------------------------|-----------------------------|--------------------------------------------|----------------------------------------------------------------------------------------------|
-| Customer ID                    | Customer_ID                 |                                            |                                                                                               |
-| Average check target value     | Required_Check_Measure      | Arabic numeral (decimal)                   | Target value of the average check required to receive a reward                               |
-| Offer group                    | Group_Name                  |                                            | The name of the offer group, for which the reward is accrued when the condition is met.   |
-| Maximum discount depth         | Offer_Discount_Depth        | Arabic numeral (decimal), percent          | The maximum possible discount for the offer                                                   |
+| Пользовательский ID                    | Customer_ID                 |                                            |                                                                                               |
+| Среднее целевое значение чека  | Required_Check_Measure      | арабские цифры (десятичные)                   | Целевое значение среднего чека, необходимого для получения вознаграждения                               |
+| Группа предложений             | Group_Name                  |                                            | 	Название группы предложений, по которой начисляется вознаграждение при выполнении условия.   |
+| Максимальная глубина скидки    | Offer_Discount_Depth        | арабские цифры (десятичные), процент          | Максимально возможная скидка на предложение                                                   |
 
 
-## Part 5. Forming personal offers aimed at increasing the frequency of visits
+## Часть 5. Формирование персональных предложений, направленных на увеличение частоты посещений
 
-Create a *part5.sql* script and add the following function to it.
+Создайте сценарий *part5.sql* и добавьте в него следующую функцию.
 
-### Write a function that determines offers aimed at increasing the frequency of visits
-Function parameters:
-- first and last dates of the period
-- added number of transactions
-- maximum churn index
-- maximum share of transactions with a discount (in percent)
-- allowable margin share (in percent)
+### Напишите функцию, определяющую предложения, направленные на увеличение частоты посещений
 
-##### Offer condition determination
+Параметры функции:
+- первая и последняя даты периода
+- добавлено количество транзакций
+- максимальный индекс оттока
+- максимальная доля сделок со скидкой (в процентах)
+- допустимая доля маржи (в процентах)
 
-1. **Period determination**.
-   The user manually sets the period of validity of the developing offer, specifying its start and end dates.
+##### Определение условия предложения
 
-2. **Determination of the current frequency of customer visits in the specified period.**
-   The start date is subtracted from the end date of the specified period, after which the received value is divided by the average intensity of customer transactions (`Customer_Frequency` of the [Customers Table](#customers-view)). The final result is saved as the base intensity of customer transactions during the specified period.
+1. **Определение периода**.
+   Пользователь вручную устанавливает срок действия разрабатываемого предложения, указывая даты его начала и окончания.
 
-3. **Determination of the reward transaction.**
-   The system determines the serial number of the transaction within the specified period, for which the reward should be accrued. For this, the value obtained at step 2 is rounded according to arithmetic rules to an integer, and then the number of transactions specified by the user is added to it. The final value is the target number of transactions that the customer must make to receive the reward.
+2. **Определение текущей частоты визитов клиентов в указанный период**
+   Дата начала вычитается из даты окончания указанного периода, после чего полученное значение делится на среднюю интенсивность транзакций клиентов (`Customer_Frequency` Таблицы [Customers Table](#customers-view)). Итоговый результат сохраняется как базовая интенсивность транзакций клиентов за указанный период.
 
-##### Reward determination
+3. **Определение вознаграждения за транзакцию**
+   Система определяет порядковый номер сделки за указанный период, за которую должно быть начислено вознаграждение. Для этого значение, полученное на шаге 2, округляется по арифметическим правилам до целого числа, а затем к нему прибавляется указанное пользователем количество транзакций. Окончательное значение — это целевое количество транзакций, которые клиент должен совершить, чтобы получить вознаграждение.
 
-4.  **Determination of the group to form the reward.** A group that meets the following criteria in sequence is selected to form the reward:
+##### Определение вознаграждения
 
-    -  The affinity index of the group is the highest possible.
+4.  **Определение группы для формирования вознаграждения** Для формирования награды выбирается группа, последовательно отвечающая следующим критериям:
+
+    -  Индекс близости группы максимально возможный.
 
     -  The churn index for this group should not exceed the value set by the user. If the churn rate exceeds the set value, the next group according to the affinity index is selected;
 
-    -  The share of transactions with a discount for this group is less than the user-defined value. If the selected group exceeds the set value, the next group is selected according to the affinity index, which also meets the churn criterion.
+    -  Доля сделок со скидкой для данной группы меньше заданного пользователем значения. Если выбранная группа превышает установленное значение, выбирается следующая группа по индексу сходства, который также соответствует критерию оттока.
 
-5.  **Determination of the maximum allowable discount for the reward.** The user manually determines the share of margin (in percent) that is allowed to be used to provide a reward for the group. The final value of the maximum allowable discount is calculated by multiplying the set value by the average customer margin for the group.
+5.  **Определение максимально допустимой скидки на вознаграждение** Пользователь вручную определяет долю маржи (в процентах), которую разрешено использовать для предоставления вознаграждения группе. Окончательное значение максимально допустимой скидки рассчитывается путем умножения установленного значения на среднюю наценку клиента по группе.
 
-6.  **Determination of the discount size**. The value obtained at step 5 is compared to the minimum discount that was fixed for the customer for the given group, rounded up in increments of 5%. If the minimum discount after rounding is less than the value obtained at step 5, it is set as a discount for the group within the offer for the customer. Otherwise, this group is excluded from consideration, and to form an offer for the customer the process is repeated, starting with step 4 (the next appropriate group according to the described criteria is used).
+6.  **Определение размера скидки**. Значение, полученное на шаге 5, сравнивается с минимальной скидкой, которая была установлена ​​для покупателя для данной группы, округленной в большую сторону с шагом 5%. Если минимальная скидка после округления меньше значения, полученного на шаге 5, она устанавливается как скидка для группы в рамках предложения для клиента. В противном случае данная группа исключается из рассмотрения, а для формирования предложения покупателю процесс повторяется, начиная с шага 4 (используется следующая подходящая группа по описанным критериям).
 
-Function output:
+
+
+
+Вывод функции:
 
 | **Поле**                     | **Имя системного поля**       | **Формат/возможные значения**      | **Описание**
 |-------------------------------|-----------------------------|-----------------------------------|--------------------------------------------------------------------------------------------|
-| Customer ID                   | Customer_ID                 |                                   |                                                                                            |
-| Period start date             | Start_Date                  | yyyy-mm-dd hh:mm:ss.0000000       | The start date of the period during which transactions must be made
-| Period end date               | End_Date                    | yyyy-mm-dd hh:mm:ss.0000000       | The end date of the period during which transactions must be made                 |
-| Target number of transactions | Required_Transactions_Count | Arabic numeral (decimal)          | Serial number of the transaction to which the reward is accrued                         |
-| Offer group                   | Group_Name                  |                                   | The name of the offer group, to which the reward is accrued when the condition is met. |
-| Maximum discount depth        | Offer_Discount_Depth        | Arabic numeral (decimal), percent | The maximum possible discount for the offer                                        |
+| Пользовательский ID           | Customer_ID                 |                                   |                                                                                            |
+| Дата начала периода           | Start_Date                  | yyyy-mm-dd hh:mm:ss.0000000       | Дата начала периода, в течение которого должны быть совершены транзакции
+| Дата окончания периода        | End_Date                    | yyyy-mm-dd hh:mm:ss.0000000       | Дата окончания периода, в течение которого должны быть совершены сделки                 |
+| Целевое количество транзакций | Required_Transactions_Count | арабские цифры (десятичные)          | Серийный номер транзакции, на которую начисляется вознаграждение                         |
+| Группа предложений            | Group_Name                  |                                   | Название группы предложений, на которую начисляется вознаграждение при выполнении условия. |
+| Максимальная глубина скидки   | Offer_Discount_Depth        | арабские цифры (десятичные), проценты | Максимально возможная скидка на предложение                                      |
 
 
-## Part 6. Forming personal offers aimed at cross-selling
+## Part 6. Формирование персональных предложений, направленных на кросс-продажи
 
-Create a *part6.sql* script and add the following function to it.
+Создайте сценарий *part6.sql* и добавьте в него следующую функцию.
 
-### Write a function that determines offers aimed at cross-selling (margin growth)
-Function parameters:
-- number of groups
-- maximum churn index
-- maximum consumption stability index
-- maximum SKU share (in percent)
-- allowable margin share (in percent)
+### Напишите функцию, определяющую предложения, направленные на кросс-продажи (рост маржи)
 
-Offers aimed at margin growth due to cross-sales involve switching the customer to the highest margin SKU within the demanded group.
+Параметры функции:
+- количество групп
+- максимальный индекс оттока
+- индекс стабильности максимального потребления
+- максимальная доля SKU (в процентах)
+- допустимая доля маржи (в процентах)
 
-1.  **Group selection.** To form offers aimed at margin growth due to cross-sales, several groups  with the maximum affinity index (the number is *set* by the user) are selected for each customer and meet the following conditions:
+Предложения, направленные на рост маржи за счет кросс-продаж, предполагают переключение покупателя на наиболее маржинальный SKU внутри востребованной группы.
 
-    1. The churn index for the group is not more than the value set by the user.
+1.  **Выбор группы** Для формирования предложений, направленных на рост маржи за счет кросс-продаж, для каждого клиента выбираются несколько групп с максимальным индексом аффинити (количество задается пользователем ) и отвечающих следующим условиям:
 
-    2. The consumption stability index is less than the value set by the user.
+    1. Индекс оттока для группы не превышает значения, установленного пользователем.
 
-2.  **Determination of SKU with maximum margin.** SKU with the maximum margin is determined in each group (in rubles).This is done by subtracting the purchase price (`SKU_Purchase_Price`) from retail price of the product (`SKU_Retail_Price`)  for all SKUs of the group represented in the store, and then selecting one SKU with the maximum value of the specified difference.
+    2. Индекс стабильности потребления меньше установленного пользователем значения.
 
-3.  **Determination of the SKU share in a group.** The share of transactions where the analyzed SKU is present is determined. This is done by dividing the number of transactions containing this SKU by the number of transactions containing the group as a whole (for the analyzed period). SKU is used to form an offer only if the resulting value does not exceed the value set by the user.
+2.  **Определение SKU с максимальной наценкой** В каждой группе определяется артикул с максимальной наценкой (в рублях). Это делается путем вычитания закупочной цены (`SKU_Purchase_Price`) из розничной цены товара (`SKU_Retail_Price`) для всех артикулов группы, представленных в магазине, и последующего выбора одного артикула с максимальное значение указанной разницы.
 
-4.  **Determination of the margin share for discount calculation.** The user *manually determines* the margin share (in percent) that is allowable to be used to provide rewards for SKU (a single value is set for the whole set of customers).
+3.  **Определение доли SKU в группе** Определяется доля транзакций, в которых присутствует анализируемый SKU. Это делается путем деления количества транзакций, содержащих этот SKU, на количество транзакций, содержащих группу в целом (за анализируемый период). Артикул используется для формирования предложения только в том случае, если полученное значение не превышает значение, установленное пользователем.
 
-5.  **Discount calculation.** The value *set* by the user at step 4 is multiplied by the difference between the retail (`SKU_Retail_Price`) and purchase (`SKU_Purchase_Price`) prices, and the resulting value is divided by the retail SKU price (`SKU_Retail_Price`). All prices are for the customer's main store. If the resulting value is equal to or greater than the minimum user discount for the analyzed group rounded up in increments of 5%, the minimum discount for the group rounded up in increments of 5% is set as a discount for the given SKU for the customer. Otherwise, no offer is formed for the customer for this group.
+4.  **Определение доли маржи для расчета скидки.** Пользователь вручную определяет долю маржи (в процентах), которую допустимо использовать для предоставления вознаграждений за SKU (для всего набора клиентов устанавливается единое значение).
 
-Function output:
+5.  **Расчет скидки** Значение, заданное пользователем на шаге 4, умножается на разницу между розничной (`SKU_Retail_Price`) и закупочной ( `SKU_Purchase_Price`) ценами, а полученное значение делится на розничную цену артикула (`SKU_Retail_Price`). Все цены указаны для основного магазина заказчика. Если полученное значение равно или превышает минимальную скидку пользователя для анализируемой группы с округлением в большую сторону с шагом 5%, в качестве скидки по данной SKU для клиент. В противном случае предложение для заказчика по данной группе не формируется.
+
+Вывод функции:
 
 | **Поле**              | **Имя системного поля** | **Формат/возможные значения**       | **Описание**                                                |
 |------------------------|-----------------------|------------------------------------|-----------------------------------------------------------------------------------------|
-| Customer ID            | Customer_ID           |                                    |                                                       |
-| SKU offers             | SKU_Name              |                                    | The name of the SKU offer, to which the reward is accrued when the condition is met. |
-| Maximum discount depth | Offer_Discount_Depth  | Arabic numeral (decimal), percent  | The maximum possible discount for the offer                                    |
+| Пользовательский ID    | Customer_ID           |                                    |                                                       |
+| SKU предложения        | SKU_Name              |                                    | Название SKU-предложения, на которое начисляется вознаграждение при выполнении условия. |
+| Максимальная глубина скидки | Offer_Discount_Depth  | арабские цифры (десятичные), проценты  | Максимально возможная скидка на предложение                                    |
 
 
-## Chapter IV
+## Глава IV
 
-Chuck had been staring at the screen for hours and couldn't figure it out. A certain \"AID\" department disappears from the statements as fast as appears, literally in the blink of an eye.
-All expenses are written off for the development of smart vacuum cleaners, something only the household department has been doing for a long time. Yes, there was a new SP-21 model released at the same time, but still what is this: an innocent typo in the name or an opportune moment? The question that will haunt Chuck in the near future...
+Чак часами смотрел на экран и не мог понять. Некий отдел "ПОМОЩЬ" исчезает из ведомостей так же быстро, как и появляется, буквально в мгновение ока. Все расходы списаны на разработку умных пылесосов, чем давно занимается только хозотдел. Да, тогда же была выпущена новая модель СП-21, но все же что это: невинная опечатка в названии или удачный момент? Вопрос, который будет преследовать Чака в ближайшем будущем...
 
 
-💡 [Tap here](https://forms.yandex.ru/u/635ab5be84227c207a24b1b6/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
+💡 [Нажмите здесь](https://forms.yandex.ru/u/635ab5be84227c207a24b1b6/) ** чтобы оставить свой отзыв о проекте**. Команда Pedago действительно старается сделать ваш образовательный опыт лучше.
