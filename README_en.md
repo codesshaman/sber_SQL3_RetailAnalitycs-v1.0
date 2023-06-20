@@ -1,86 +1,88 @@
-Розничная аналитика v1.0
+RetailAnalytics v1.0
 
-Выгрузка данных розничной аналитики, их простой анализ, статистика, сегментация клиентов и создание персональных предложений.
+Retail analytics data upload, its simple analysis, statistics, customer segmentation and creation of personal offers.
 
-## Содержание
+## Contents
 
-1. [Глава I](#chapter-i) 
+1. [Chapter I](#chapter-i) 
     
-   1.1. [Введение](#introduction)
-2. [Глава II](#chapter-ii) 
+   1.1. [Introduction](#introduction)
+2. [Chapter II](#chapter-ii) 
     
-   2.1. [Информация](#information)
-3. [Глава III](#chapter-iii) 
+   2.1. [Information](#information)
+3. [Chapter III](#chapter-iii) 
     
-   3.1. [Часть 1. Создание базы данных](#part-1-creating-a-database)  
-   3.2. [Часть 2. Создание представлений](#part-2-creating-views)  
-   3.3. [Часть 3. Ролевая модель](#part-3-role-model)  
-   3.4. [Часть 4. Формирование персональных предложений, направленных на рост среднего чека](#part-4-forming-personal-offers-aimed-at-the-growth-of-the-average-check)  
-   3.5. [Часть 5. Формирование персональных предложений, направленных на увеличение частоты посещений](#part-5-forming-personal-offers-aimed-at-increasing-the-frequency-of-visits)  
-   3.6. [Часть 6. Формирование персональных предложений, направленных на кросс-продажи](#part-6-forming-personal-offers-aimed-at-cross-selling)
-4. [Глава IV](#chapter-iv)
+   3.1. [Part 1. Creating a database](#part-1-creating-a-database)  
+   3.2. [Part 2. Creating views](#part-2-creating-views)  
+   3.3. [Part 3. Role model](#part-3-role-model)  
+   3.4. [Part 4. Forming personal offers aimed at the growth of the average check](#part-4-forming-personal-offers-aimed-at-the-growth-of-the-average-check)  
+   3.5. [Part 5. Forming personal offers aimed at increasing the frequency of visits](#part-5-forming-personal-offers-aimed-at-increasing-the-frequency-of-visits)  
+   3.6. [Part 6. Forming personal offers aimed at cross-selling](#part-6-forming-personal-offers-aimed-at-cross-selling)
+4. [Chapter IV](#chapter-iv)
 
 
-## Глава I
+## Chapter I
 
 ![SQL3_RetailAnalytics_v1.0](https://edu.21-school.ru/services/storage/download/public_any/182e845c-6712-4356-814d-7295dc8afe30?path=tenantId/96098f4b-5708-4c42-a62c-6893419169b3/gitlab/content_versions/356303/a48ef565-0ca6-3d96-b763-420bd6c26918.PNG)
 
-Чак держал в руках уже слегка помятую финансовую отчетность за прошедший период и пытался понять написанные там цифры. Он слишком долго откладывал их обработку, анализ и согласование. И бумажная работа, казалось, росла с каждым днем ​​все больше и больше, пока, наконец, количество бумаг не превысило критического значения, когда справляться с этим в одиночку уже нельзя. Чак сидел один в офисе, беспомощно играя с листами в руках, перелистывая страницы, словно надеясь, что это поможет сократить их количество, пытаясь понять, какие самолеты из них можно сделать. Он задавался вопросом, сможет ли он сделать из этого количества бумажный боинг. Он даже гуглил инструкции, как это сделать.
+Chuck was holding the already slightly crumpled financial statements for the past period and trying to understand the numbers written there. He had been putting off processing, analyzing, and reconciling them for too long. And the paperwork seemed to be growing more and more every day, until finally the number of papers exceeded the critical value, when one can no longer deal with it alone. Chuck was sitting alone at the office, helplessly playing with the sheets in his hands, flipping through the pages as if hoping that this would help reduce their number, trying to figure out what kind of airplanes they could be made into. He wondered if he could make a paper boeing out of that much. He even googled instructions on how to do it.
 
-Но это не решило проблему, и перед ним все еще стояли утверждения с числами.
+But that didn't solve the problem, and the statements with numbers were still in front of him. 
     
-`-` \"Кажется, пора начать использовать свои знания SQL,\" подумал про себя Чак. - \"Если я смогу автоматизировать обработку и анализ, мне не понадобится чья-либо помощь. В конце концов, знание SQL не было пустой тратой времени”
+`-` \"Seems like it's high time to start using my SQL knowledge,'' Chuck thought to himself. - \"If I can automate the processing and analysis, I won't need much help from anyone. Remembering SQL wasn't a waste of time after all.”
 
-Так что Чаку оставалось сделать всего несколько вещей: формализовать структуру данных, алгоритмы обработки и поместить все это в код. Главное не отвлекаться лишний раз где-то в процессе...
+So Chuck only had a few things to do: formalize the data structure, the processing algorithms, and put it all into code. The key is not to get distracted again somewhere in the process...
 
-## Введение
+## Introduction
 
-В этом проекте вы примените на практике свои знания SQL. Вам нужно будет создать базу данных со сведениями о клиентах розничных продавцов и написать представления и процедуры, необходимые для создания персональных предложений.
+In this project you will put into practice your knowledge of SQL.
+You will need to create a database with knowledge of retailers' customers, and write the views and procedures needed to create personal offers.
 
-## Глава II
 
-## Основные правила
+## Chapter II
 
-- Пожалуйста, убедитесь, что вы используете последнюю версию PostgreSQL.
-- Это совершенно нормально, если вы используете IDE для написания исходного кода (он же SQL-скрипт).
-- Для оценки ваше решение должно находиться в вашем репозитории GIT.
-- Ваши решения будут оценены коллегами.
-- Вы не должны оставлять в своем каталоге никаких других файлов, кроме sql-скриптов или CSV-файлов. Рекомендуется изменить его `.gitignore`, чтобы избежать несчастных случаев.
-- У вас есть вопрос? Спросите у соседа справа. Так же попробуйте с соседом слева.
-- Ваш справочник: коллеги/интернет/гугл.
-- И да прибудет с вами SQL-Force!
-- Абсолютно все можно представить в SQL! Давайте начнем и получайте удовольствие!
+## General Rules
 
-## Логическое представление модели базы данных
+- Please make sure you are using the latest version of PostgreSQL.
+- That is completely OK if you are using IDE to write a source code (aka SQL script).
+- To be assessed your solution must be in your GIT repository.
+- Your solutions will be evaluated by your peers.
+- You should not leave in your directory any other file except sql scripts or csv files. It is recommended that you modify your `.gitignore` to avoid accidents.
+- Do you have a question? Ask your neighbor on the right. Otherwise, try with your neighbor on the left.
+- Your reference manual: peers / Internet / Google.
+- And may the SQL-Force be with you!
+- Absolutely everything can be presented in SQL! Let’s start and have fun!
 
-Данные, описанные в таблицах [Входные данные](#input-data), заполняются пользователем.
+## Logical view of database model
 
-Данные, описанные в представлениях [Выходные данные](#output-data), рассчитываются программой.
+The data described in the [Input Data](#input-data) tables are filled in by the user.
+
+The data described in the [Output Data](#output-data) views are calculated by the program. 
     
-Более подробное описание заполнения этих представлений будет дано ниже.
+A more detailed description for filling in these views will be given below.
 
-### Входные данные
+### Input Data
 
-#### Таблица Personal information
+#### Personal information Table
 
-| **Поле**                   | **Имя системного поля**       | **Формат/возможные значения**                                                     | **Описание**                                                                                              |
+| **Field**                   | **System field name**       | **Format / possible values**                                                     | **Description**                                                                                              |
 |:---------------------------:|:---------------------------:|:--------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------:|
-| Пользовательский ID                 | Customer_ID                 | ---                                                                              | ---                                                                                                       |
-| Имя                        | Customer_Name               | Кириллица или латиница, первая буква заглавная, остальные прописные, допускаются тире и пробелы | ---                                                                                                       |
-| Фамилия                     | Customer_Surname            | Кириллица или латиница, первая буква заглавная, остальные прописные, допускаются тире и пробелы | ---                                                                                                       |
-| Электронная почта клиента             | Customer_Primary_Email      | Формат электронной почты E-mail format                                                                    | ---                                                                                                                             |
-| Номер телефона клиента      | Customer_Primary_Phone      | +7 и 10 арабских цифр                                                           | ---                                                                                                       |
+| Customer ID                 | Customer_ID                 | ---                                                                              | ---                                                                                                       |
+| Name                        | Customer_Name               | Cyrillic or Latin, the first letter is capitalized, the rest are upper case, dashes and spaces are allowed | ---                                                                                                       |
+| Surname                     | Customer_Surname            | Cyrillic or Latin, the first letter is capitalized, the rest are upper case, dashes and spaces are allowed | ---                                                                                                       |
+| Customer E-mail             | Customer_Primary_Email      | E-mail format                                                                    | ---                                                                                                                             |
+| Customer phone number       | Customer_Primary_Phone      | +7 and 10 Arabic numerals                                                                 | ---                                                                                                       |
 
-#### Таблица Cards
+#### Cards Table
 
-| **Поле**   | **Имя системного поля**       | **Формат/возможные значения**    | **Описание**                    |
+| **Field**   | **System field name**       | **Format / possible values**    | **Description**                    |
 |:-----------:|:---------------------------:|:-------------------------------:|:----------------------------------:|
-| ID карты     | Customer_Card_ID            | ---                             | ---                                |
-| Пользовательский ID | Customer_ID                 | ---                             | Один клиент может владеть несколькими картами |
+| Card ID     | Customer_Card_ID            | ---                             | ---                                |
+| Customer ID | Customer_ID                 | ---                             | One customer can own several cards |
 
-#### Таблица Transactions
+#### Transactions Table
 
-| **Поле**                | **Имя системного поля**       | **Формат/возможные значения**    | **Описание**                                               |
+| **Field**                | **System field name**       | **Format / possible values**    | **Description**                                               |
 |:------------------------:|:---------------------------:|:-------------------------------:|:-------------------------------------------------------------------------:|
 | Transaction ID           | Transaction_ID              | ---                             | Unique value                                                               |
 | Card ID                  | Customer_Card_ID            | ---                             | ---                                                                        |
@@ -88,9 +90,9 @@
 | Transaction date         | Transaction_DateTime        | dd.mm.yyyy hh:mm:ss             | Date and time when the transaction was made                                |
 | Store                    | Transaction_Store_ID        | Store ID                        | The store where the transaction was made                                   |
 
-#### Таблица Checks
+#### Checks Table
 
-| **Поле**                                        | **Имя системного поля**  | **Формат/возможные значения** | **Описание**                                                                                                                  |
+| **Field**                                        | **System field name**  | **Format / possible values** | **Description**                                                                                                                  |
 |:------------------------------------------------:|:----------------------:|:----------------------------:|:----------------------------------------------------------------------------------------------------------------:|
 | Transaction ID                                   | Transaction_ID         | ---                          | Transaction ID is specified for all products in the check                                                         |
 | Product in the check                             | SKU_ID                 | ---                          | ---                                                                                                               |
@@ -99,9 +101,9 @@
 | The paid price of the product                    | SKU_Summ_Paid          | Arabic numeral               | The amount actually paid for the product not including the discount                                            |
 | Discount granted                                 | SKU_Discount           | Arabic numeral               | The size of the discount granted for the product in rubles                                                 |
 
-#### Таблица Product grid
+#### Product grid Table
 
-| **Поле**                     | **Имя системного поля**       | **Формат/возможные значения**                  | **Описание**                                                                                                                                                                                                |
+| **Field**                     | **System field name**       | **Format / possible values**                  | **Description**                                                                                                                                                                                                |
 |:-----------------------------:|:---------------------------:|:---------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | Product ID                    | SKU_ID                      | ---                                           | ---                                                                                                                                                                                                            |
 | Product name                  | SKU_Name                    | Cyrillic or Latin, Arabic numerals, special characters | ---                                                                                                                                                                                                            |
@@ -109,9 +111,9 @@
 | Product purchase price | SKU_Purchase_Price          | Arabic numeral                                       | The purchase price of the product for this store                                                                                                                                                             |
 | Product retail price   | SKU_Retail_Price            | Arabic numeral                                       | The sale price of the product excluding discounts for this store                                                                                                                                          |
 
-#### Таблица Stores
+#### Stores Table
 
-| **Поле**              | **Имя системного поля**    | **Формат/возможные значения** | **Описание**                                                  |
+| **Field**              | **System field name**    | **Format / possible values** | **Description**                                                  |
 |:----------------------:|:------------------------:|:----------------------------:|:----------------------------------------------------------------:|
 | Store                  | Transaction_Store_ID     | ---                          | ---                                                              |
 | Product ID             | SKU_ID                   | ---                          | ---                                                              |
@@ -119,25 +121,25 @@
 | Product retail price   | SKU_Retail_Price         | Arabic numeral               | The sale price of the product excluding discounts for this store |
 
 
-#### Таблица SKU group
+#### SKU group Table
 
-| **Поле**         | **Имя системного поля** | **Формат/возможные значения**                  | **Описание** |
+| **Field**         | **System field name** | **Format / possible values**                  | **Description** |
 |:-----------------:|:---------------------:|:---------------------------------------------:|:---------------:|
 | SKU group         | Group_ID              | ---                                           | ---             |
 | Group name        | Group_Name            | Cyrillic or Latin, Arabic numerals, special characters | ---             | 
 
 #### Date of analysis formation Table
 
-| **Field**         | **Имя системного поля** | **Формат/возможные значения**                  | **Описание** |
+| **Field**         | **System field name** | **Format / possible values**                  | **Description** |
 |:-----------------:|:---------------------:|:---------------------------------------------:|:---------------:|
 | Date of analysis         | Analysis_Formation              | dd.mm.yyyy hh:mm:ss                                           | ---             |
 
 
 ### Output data
 
-#### Представление Customers
+#### Customers View
 
-| **Поле**                                     | **Имя системного поля**          | **Формат/возможные значения**     | **Описание**                                                                  |
+| **Field**                                     | **System field name**          | **Format / possible values**     | **Description**                                                                  |
 |:---------------------------------------------:|:------------------------------:|:--------------------------------:|:-----------------------------------------------------------------------------:|
 | Customer ID                                   | Customer_ID                    | ---                              | Unique value                                                                   |
 | Value of the average check                    | Customer_Average_Check         | Arabic numeral, decimal          | Value of the average check in rubles for the analyzed period                 |
@@ -150,9 +152,9 @@
 | Segment number                                | Customer_Segment               | Arabic numeral                   | The number of the segment to which the customer belongs                        |
 | Main  store ID                                | Customer_Primary_Store         | ---                              | ---                                                                            |
 
-#### Представление Purchase history
+#### Purchase history View
 
-| **Поле**                       | **Имя системного поля**       | **Формат/возможные значения**     | **Описание**                                                       |
+| **Field**                       | **System field name**       | **Format / possible values**     | **Description**                                                       |
 |:-------------------------------:|:---------------------------:|:--------------------------------:|:--------------------------------------------------------------------:|
 | Customer ID                     | Customer_ID                 | ---                              | ---                                                                   |
 | Transaction ID                  | Transaction_ID              | ---                              | ---                                                                   |
@@ -162,9 +164,9 @@
 | Base retail price               | Group_Summ                  | Arabic numeral, decimal | ---                                                                                                                                                                                                                                         |
 | Actual cost paid                | Group_Summ_Paid             | Arabic numeral, decimal | ---                                                                                                                                                                                                                                         |
 
-#### Представление Periods
+#### Periods View
 
-| **Поле**                                     | **Имя системного поля**       | **Формат/возможные значения**     | **Описание**                                                                                                                                                                                                 |
+| **Field**                                     | **System field name**       | **Format / possible values**     | **Description**                                                                                                                                                                                                 |
 |:---------------------------------------------:|:---------------------------:|:--------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | Customer ID                                   | Customer_ID                 | ---                              | ---                                                                                                                                                                                                          |
 | SKU group                                     | Group_ID                    | ---                              | The ID of the group of related products to which the product belongs (for example, same type of yogurt of the same manufacturer and volume, but different flavors). One identifier is specified for all products in the group |
@@ -174,9 +176,9 @@
 | Intensity of group purchases                  | Group_Frequency             | Arabic numeral, decimal          | ---                                                                                                                                                                                                          |
 | Minimum group discount                        | Group_Min_Discount          | Arabic numeral, decimal | ---                                                                                                                                                                                                          |
 
-#### Представление Groups
+#### Groups View
 
-| **Поле**                              | **Имя системного поля**       | **Формат/возможные значения**     | **Описание**                                                                                                                        |
+| **Field**                              | **System field name**       | **Format / possible values**     | **Description**                                                                                                                        |
 |:--------------------------------------:|:---------------------------:|:--------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
 | Customer ID                            | Customer_ID                 | ---                              | ---                                                                                                                                 |
 | Group ID                               | Group_ID                    | ---                              | ---                                                                                                                                 |
@@ -268,7 +270,7 @@ The user manually determines the share of margin (in percent) that is allowed to
 
 Function output:
 
-| **Поле**                      | **Имя системного поля**      | **Формат/возможные значения**                | **Описание**                                                                               |
+| **Field**                      | **System field name**      | **Format / possible values**                | **Description**                                                                               |
 |--------------------------------|-----------------------------|--------------------------------------------|----------------------------------------------------------------------------------------------|
 | Customer ID                    | Customer_ID                 |                                            |                                                                                               |
 | Average check target value     | Required_Check_Measure      | Arabic numeral (decimal)                   | Target value of the average check required to receive a reward                               |
@@ -315,7 +317,7 @@ Function parameters:
 
 Function output:
 
-| **Поле**                     | **Имя системного поля**       | **Формат/возможные значения**      | **Описание**
+| **Field**                     | **System field name**       | **Format / possible values**      | **Description**
 |-------------------------------|-----------------------------|-----------------------------------|--------------------------------------------------------------------------------------------|
 | Customer ID                   | Customer_ID                 |                                   |                                                                                            |
 | Period start date             | Start_Date                  | yyyy-mm-dd hh:mm:ss.0000000       | The start date of the period during which transactions must be made
@@ -355,7 +357,7 @@ Offers aimed at margin growth due to cross-sales involve switching the customer 
 
 Function output:
 
-| **Поле**              | **Имя системного поля** | **Формат/возможные значения**       | **Описание**                                                |
+| **Field**              | **System field name** | **Format / possible values**       | **Description**                                                |
 |------------------------|-----------------------|------------------------------------|-----------------------------------------------------------------------------------------|
 | Customer ID            | Customer_ID           |                                    |                                                       |
 | SKU offers             | SKU_Name              |                                    | The name of the SKU offer, to which the reward is accrued when the condition is met. |
