@@ -1,98 +1,123 @@
-CREATE DATABASE customer_data;
-
-\c customer_data
-
-CREATE TABLE Personal_Information (
-  Customer_ID serial PRIMARY KEY,
-  Customer_Name varchar(50) NOT NULL,
-  Customer_Surname varchar(50) NOT NULL,
-  Customer_Primary_Email varchar(100) NOT NULL,
-  Customer_Primary_Phone varchar(12) NOT NULL
+-- Create the Personal information table
+CREATE TABLE IF NOT EXISTS Personal_Information (
+  Customer_ID INT PRIMARY KEY,
+  Customer_Name VARCHAR(255),
+  Customer_Surname VARCHAR(255),
+  Customer_Primary_Email VARCHAR(255),
+  Customer_Primary_Phone VARCHAR(255)
 );
 
-CREATE TABLE Cards (
-  Customer_Card_ID serial PRIMARY KEY,
-  Customer_ID int NOT NULL REFERENCES Personal_Information(Customer_ID)
+-- Create the Cards table
+CREATE TABLE IF NOT EXISTS Cards (
+  Customer_Card_ID INT PRIMARY KEY,
+  Customer_ID INT,
+  FOREIGN KEY (Customer_ID) REFERENCES Personal_Information(Customer_ID)
 );
 
-CREATE TABLE Transactions (
-  Transaction_ID serial PRIMARY KEY,
-  Customer_Card_ID int NOT NULL REFERENCES Cards(Customer_Card_ID),
-  Transaction_Summ numeric(10,2) NOT NULL,
-  Transaction_DateTime timestamp NOT NULL,
-  Transaction_Store_ID varchar(10) NOT NULL
+-- Create the Transactions table
+CREATE TABLE IF NOT EXISTS Transactions (
+  Transaction_ID INT PRIMARY KEY,
+  Customer_Card_ID INT,
+  Transaction_Summ DECIMAL(10, 2),
+  Transaction_DateTime TIMESTAMP,
+  FOREIGN KEY (Customer_Card_ID) REFERENCES Cards(Customer_Card_ID)
 );
 
-CREATE TABLE Checks (
-  SKU_ID int NOT NULL,
-  Transaction_ID int NOT NULL REFERENCES Transactions(Transaction_ID),
-  SKU_Amount numeric(10,2) NOT NULL,
-  SKU_Summ numeric(10,2) NOT NULL,
-  SKU_Summ_Paid numeric(10,2) NOT NULL,
-  SKU_Discount numeric(10,2) NOT NULL,
-  PRIMARY KEY (SKU_ID, Transaction_ID)
+-- Create the Checks table
+CREATE TABLE IF NOT EXISTS Checks (
+  Transaction_ID INT,
+  SKU_ID INT,
+  SKU_Amount INT,
+  SKU_Summ DECIMAL(10, 2),
+  SKU_Summ_Paid DECIMAL(10, 2),
+  SKU_Discount DECIMAL(10, 2),
+  FOREIGN KEY (Transaction_ID) REFERENCES Transactions(Transaction_ID)
 );
 
-CREATE TABLE Product_Grid (
-  SKU_ID serial PRIMARY KEY,
-  SKU_Name varchar(50) NOT NULL,
-  Group_ID int NOT NULL,
-  SKU_Purchase_Price numeric(10,2) NOT NULL,
-  SKU_Retail_Price numeric(10,2) NOT NULL
+-- Create the Product grid table
+CREATE TABLE IF NOT EXISTS Product_Grid (
+  SKU_ID INT PRIMARY KEY,
+  SKU_Name VARCHAR(255),
+  Group_ID INT,
+  SKU_Purchase_Price DECIMAL(10, 2),
+  SKU_Retail_Price DECIMAL(10, 2)
 );
 
-CREATE TABLE Stores (
-  Transaction_Store_ID varchar(10) NOT NULL,
-  SKU_ID int NOT NULL REFERENCES Product_Grid(SKU_ID),
-  SKU_Purchase_Price numeric(10,2) NOT NULL,
-  SKU_Retail_Price numeric(10,2) NOT NULL
+-- Create the Stores table
+CREATE TABLE IF NOT EXISTS Stores (
+  Store_ID INT PRIMARY KEY,  -- Изменили название поля на Store_ID
+  Transaction_Store_ID INT,
+  SKU_ID INT,
+  SKU_Purchase_Price DECIMAL(10, 2),
+  SKU_Retail_Price DECIMAL(10, 2),
+  FOREIGN KEY (Transaction_Store_ID) REFERENCES Transactions(Transaction_ID)
 );
 
-CREATE TABLE SKU_Group (
-  Group_ID serial PRIMARY KEY,
-  Group_Name varchar(50) NOT NULL
+-- Create the SKU group table
+CREATE TABLE IF NOT EXISTS SKU_Group (
+  Group_ID INT PRIMARY KEY,
+  Group_Name VARCHAR(255)
 );
 
-CREATE TABLE Analysis_Formation_Date (
-  Analysis_Formation timestamp NOT NULL PRIMARY KEY
+-- Create the Date of analysis formation table
+CREATE TABLE IF NOT EXISTS Date_of_Analysis_Formation (
+  Analysis_Formation TIMESTAMP
 );
 
--- Add test data to Personal_Information table
-INSERT INTO Personal_Information (Customer_Name, Customer_Surname, Customer_Primary_Email, Customer_Primary_Phone)
-VALUES 
-('John', 'Doe', 'johndoe@gmail.com', '+79876543210'),
-('Jane', 'Doe', 'janedoe@gmail.com', '+79123456789'),
-('Bob', 'Smith', 'bob.smith@yahoo.com', '+79991234567'),
-('Alice', 'Jones', 'alicejones@hotmail.com', '+79011234567'),
-('Peter', 'Johnson', 'peterjohnson@gmail.com', '+79129567890');
+-- Insert sample data into Personal Information table
+INSERT INTO Personal_Information (Customer_ID, Customer_Name, Customer_Surname, Customer_Primary_Email, Customer_Primary_Phone)
+VALUES (1, 'John', 'Doe', 'johndoe@example.com', '+79123456789'),
+       (2, 'Jane', 'Smith', 'janesmith@example.com', '+79098765432'),
+       (3, 'Michael', 'Johnson', 'michaeljohnson@example.com', '+79876543210'),
+       (4, 'Emily', 'Davis', 'emilydavis@example.com', '+79785634120'),
+       (5, 'David', 'Taylor', 'davidtaylor@example.com', '+79654321870');
 
--- Add test data to Cards table
-INSERT INTO Cards (Customer_ID)
-VALUES 
-(1),
-(1),
-(2),
-(3),
-(4),
-(5),
-(5);
+-- Insert sample data into Cards table
+INSERT INTO Cards (Customer_Card_ID, Customer_ID)
+VALUES (101, 1),
+       (102, 1),
+       (103, 2),
+       (104, 3),
+       (105, 4);
 
--- Add test data to Transactions table
-INSERT INTO Transactions (Customer_Card_ID, Transaction_Summ, Transaction_DateTime, Transaction_Store_ID)
-VALUES 
-(1, 500.00, '2022-01-01 12:00:00', 'Store A'),
-(2, 800.00, '2022-01-02 10:00:00', 'Store B'),
-(3, 1500.00, '2022-01-03 15:00:00', 'Store A'),
-(4, 2000.00, '2022-01-05 16:00:00', 'Store C'),
-(5, 1000.00, '2022-01-06 09:00:00', 'Store B'),
-(6, 1200.00, '2022-01-07 11:00:00', 'Store A'),
-(7, 300.00, '2022-01-08 13:00:00', 'Store B');
+-- Insert sample data into Transactions table
+INSERT INTO Transactions (Transaction_ID, Customer_Card_ID, Transaction_Summ, Transaction_DateTime)
+VALUES (1001, 101, 500.00, '2023-06-01 10:15:00'),
+       (1002, 101, 100.00, '2023-06-03 14:30:00'),
+       (1003, 102, 200.00, '2023-06-04 09:45:00'),
+       (1004, 103, 150.00, '2023-06-05 16:20:00'),
+       (1005, 104, 300.00, '2023-06-06 11:10:00');
 
--- Add test data to Checks table
-INSERT INTO Checks (SKU_ID, Transaction_ID, SKU_Amount, SKU_Summ, SKU_Summ_Paid, SKU_Discount)
-VALUES 
-(1, 1, 1, 500.00, 500.00, 0),
-(2, 2, 2, 800.00, 720.00, 80.00),
-(3, 3, 1, 1500.00, 1500.00, 0),
-(4, 4, 3, 2000.00, 1900.00, 100.00),
-(5, 5, 1, 1000.00, 900.00, 100.00);
+-- Insert sample data into Checks table
+INSERT INTO Checks (Transaction_ID, SKU_ID, SKU_Amount, SKU_Summ, SKU_Summ_Paid, SKU_Discount)
+VALUES (1001, 1001, 2, 100.00, 100.00, 0.00),
+       (1001, 1002, 1, 50.00, 50.00, 0.00),
+       (1002, 1003, 1, 50.00, 50.00, 0.00),
+       (1003, 1004, 1, 200.00, 200.00, 0.00),
+       (1004, 1005, 2, 100.00, 100.00, 0.00);
+
+-- Insert sample data into Product Grid table
+INSERT INTO Product_Grid (SKU_ID, SKU_Name, Group_ID, SKU_Purchase_Price, SKU_Retail_Price)
+VALUES (1001, 'Product 1', 1, 10.00, 15.00),
+       (1002, 'Product 2', 1, 20.00, 30.00),
+       (1003, 'Product 3', 2, 30.00, 45.00),
+       (1004, 'Product 4', 2, 40.00, 60.00),
+       (1005, 'Product 5', 3, 50.00, 75.00);
+
+-- Insert sample data into Stores table
+INSERT INTO Stores (Store_ID, Transaction_Store_ID, SKU_ID, SKU_Purchase_Price, SKU_Retail_Price)
+VALUES (1, 1001, 1001, 9.50, 14.50),
+       (2, 1001, 1002, 19.50, 29.50),
+       (3, 1002, 1003, 29.50, 44.50),
+       (4, 1002, 1004, 39.50, 59.50),
+       (5, 1003, 1005, 49.50, 74.50);
+
+-- Insert sample data into SKU Group table
+INSERT INTO SKU_Group (Group_ID, Group_Name)
+VALUES (1, 'Group 1'),
+       (2, 'Group 2'),
+       (3, 'Group 3');
+
+-- Insert sample data into Date of Analysis Formation table
+INSERT INTO Date_of_Analysis_Formation (Analysis_Formation)
+VALUES ('2023-06-15 12:00:00');

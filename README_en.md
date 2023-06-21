@@ -58,7 +58,7 @@ You will need to create a database with knowledge of retailers' customers, and w
 The data described in the [Input Data](#input-data) tables are filled in by the user.
 
 The data described in the [Output Data](#output-data) views are calculated by the program. 
-    
+
 A more detailed description for filling in these views will be given below.
 
 ### Input Data
@@ -204,7 +204,7 @@ A separator is specified as a parameter of each procedure for importing from a *
 Enter at least 5 records in every table.
 As you progress through the task, you will need new data to test all of your choices.
 This new data should also be added to this script. 
-    
+
 Some test data could be found in the *datasets* folder.
 
 If *csv* or *tsv* files were used to add data to the tables, they must also be uploaded to the GIT repository.
